@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Basic Example2 - jQuery The Final Countdown plugin</title>
+</head>
+
+<body>
+<div class="hasboxcontent">
+ <div class='a1' data-countdown="2016-04-8 11:47:17"></div>
+ <div data-countdown="2016-04-2 8:47:34"></div>
+ <div data-countdown="2016-04-5 11:17:20"></div>
+  </div>
+  <script src="src/zepto.js"></script>
+  <script src="src/zepto.countdown.js"></script>
+<script type="text/javascript">
+ $(function(){
+  $('[data-countdown]').each(function() {
+
+             var $this = $(this), 
+                // finalDate = new Date(new Date().getTime() + (1000 * 10)).getTime()
+                finalDate = $(this).data('countdown');
+                // console.log(finalDate)
+                
+                 $this.countdown(finalDate, function(event) {
+
+                   // if(event.strftime('%D')>0){
+                   //   $this.html(event.strftime('%D 天')); 
+                   // }else{
+                   // console.log(event)
+                     $this.html(event.strftime('%D 天 %H:%M:%S'));
+                   // }
+                   $this.On('finish.countdown', function(event) {
+                      $(this).parents(".hasboxcontent").remove();
+                  })
+               });
+                
+                
+        });
+ });
+</script>
+</body>
+</html>

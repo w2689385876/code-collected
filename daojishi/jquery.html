@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Basic Example2 - jQuery The Final Countdown plugin</title>
+</head>
+
+<body>
+ <div id="getting-started" data-countdown="2016-04-10 11:47:40"></div>
+  <script src="jquery-1.9.1.min.js"></script>
+  <script src="jquery.countdown.js"></script>
+<script type="text/javascript">
+ $(function(){
+  $('[data-countdown]').each(function() {
+
+             var $this = $(this), 
+                finalDate = $(this).data('countdown');
+                
+                 $this.countdown(finalDate, function(event) {
+
+                   // if(event.strftime('%D')>0){
+                   //   $this.html(event.strftime('%D 天')); 
+                   // }else{
+                     $this.html(event.strftime('%D 天 %H:%M:%S'));
+                   // }
+                
+                }) .on('finish.countdown', function(event) {
+                  $(this).parents(".hasboxcontent").remove();
+               });
+        });
+ });
+</script>
+</body>
+</html>
