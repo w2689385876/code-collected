@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  user-scalable=no"/>
+    <title>查看适配车型</title>
+
+    <link rel="stylesheet" href="css/lubaoBox.css">
+    <link rel="stylesheet" href="css/carStyle.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcuticon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+<div id="page_header" class="page_header">
+    <div class="page_container">
+        <div class="logo"><a href="http://map.qq.com/lubao?w_id=101"><img src="http://3gimg.qq.com/tencent_map_wap_static/img/lubao/lubaov3/logo.png"></a></div>
+        <ul class="header_left">
+            <li class="nav-item">
+                <a href="http://map.qq.com/lubao/?w_id=101" target="_blank">路宝首页</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://map.qq.com/lubao/product">产品介绍</a>
+            </li>
+            <li class="nav-item tab_active">
+                <a href="index.html">路宝盒子</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://map.qq.com/lubao/icar">i车生活</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://map.qq.com/lubao/hezi/activity.html">i保养</a>
+            </li>
+            <li class="nav-item">
+                <a href="http://map.qq.com/lubao/ask.html">常见问题</a>
+            </li>
+        </ul>
+        <div class="header_right">
+            <div id="J_loginstatus" style="float:left;"><a title="登录" onclick="qq_login&amp;&amp;qq_login.login();return false;">登录</a>
+            </div>
+            <span>|</span>
+            <a class="viewCarStyle" href="carStyle.html" onclick="pgvSendClick({hottag:'HEZI.PC.INDEX.CARSTYLE',virtualDomain:'lubaopc.virtual.qq.com'});">查看适配车型</a>
+            <span>|</span>
+            <a href="http://bbs.lubao.qq.com/forum.php" target="_blank" onclick="pgvSendClick({hottag:'HEZI.PC.INDEX.BBS',virtualDomain: 'lubaopc.virtual.qq.com'});">进入论坛</a>
+            <span>|</span>
+            <a href="http://knewone.com/things/teng-xun-lu-bao-he-zi" target="_blank" onclick="pgvSendClick({hottag:'HEZI.PC.INDEX.KNEWONE',virtualDomain: 'lubaopc.virtual.qq.com'});">社区合作伙伴</a>
+        </div>
+    </div>
+</div>
+<div id="main-wrap">
+    <div id="check-list">
+        <div id="msgList">
+        </div>
+        <script id="msgTpl" type="text/template">
+            <div class="msg-list-wrap">
+                <% for(var i in list){ %>
+                    <p class="clearfix">
+                        <span class="fl">
+                            <% if(list[i].link){%>
+                                <a href="#" target="_blank">【<%=list[i].type%>】 <%= list[i].text %></a>
+                            <%}else{%>
+                                【<%=list[i].type%>】 <%= list[i].text %>
+                            <%}%>
+                        </span>
+                        <span class="fr"><%= list[i].date %></span>
+                    </p>
+                <%}%>
+            </div>
+        </script>
+        <p class="check-list-tip">
+            请点击车型，查看具体适配范围<span class="gray"><span class="icon icon-cord"></span> 建议购买延长线</span>
+        </p>
+        <h3>按品牌首字母查找：</h3>
+        <script id="clsTpl" type="text/template">
+            <% for(var i in list){ %>
+                <a href="javascript:void(0);"><%= list[i] %></a>
+            <%}%>
+        </script>
+        <div id="clsList"></div>
+    </div>
+<div id="carList"></div>
+<script id="carTpl" type="text/template">
+    <% for(var i in list){ %>
+      <% var cls = list[i]; %>
+      <div class="car-list">
+          <div class="th"><a name="<%= i %>"><%= i %></a></div>
+          <% for(var j in cls){ %>
+            <% var brand = cls[j]; %>
+            <div class="t-content clearfix">
+              <div class="left-title">
+                <div>
+                    <img src="http://3gimg.qq.com/tencentMapTouch/lubao/hezi/logo2/<%= brand.id %>.png" alt=""/>
+                    <span><%= brand.name %></span>
+                    <%if(brand.beizhu==1){%>
+                    <span class="icon-beizhu">
+                        <span class="cord-box">
+                            由于该车型使用多种型号ECU，路宝盒子暂时无法完美支持，请购买前咨询客服热线：4001-015-888
+                        </span>
+                    </span>
+                    <%}%>
+                </div>
+              </div>
+              <ul class="table-list">
+                <% for(var k in brand.serial){ %>
+                    <% var car = brand.serial[k]; %>
+                    <li>
+                        <p class="car"><%= car.name %> 
+                            <% if(car.line == 1){%>
+                                <span class="icon icon-cord"></span>
+                            <%}%>
+                        </p>
+                        <div class="cord-box">
+                            <div class="cord-box-top">
+                                <div>
+                                适配范围<br>支持<%= car.year %>款
+                                </div>
+                            </div>
+                            <div class="cord-box-bottom">
+                                <% if(car.line == 1){%>
+                                <p>建议购买延长线</p>
+                                <%}%>
+                                <a target="_blank" href="http://item.jd.com/1159330.html" onclick="pgvSendClick({hottag:'HEZI.PC.CARSTYLE.JD',virtualDomain: 'lubaopc.virtual.qq.com'});">购买盒子</a>
+                            </div>
+                        </div>
+                    </li>
+                <%}%>
+              </ul>
+            </div>
+          <%}%>
+      </div>
+    <%}%>
+</script>
+
+</div>
+<div class="footer">
+    <p class="footer-link"><a href="http://map.qq.com/lubao/?w_id=101" target="_blank">首页</a><span>|</span><a
+            href="http://map.qq.com/lubao/ask.html" target="_blank">常见问题</a><span>|</span><a
+            href="http://bbs.map.qq.com/forum-54-1.html"
+            target="_blank">意见反馈</a><span>|</span><a
+            href="http://map.qq.com/"
+            target="_blank">腾讯地图</a></p>
+
+    <p class="copy-info">Copyright © 1998-2015 Tencent All Right Reserved.腾讯公司 版权所有</p>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<!--<script type="text/javascript" src="js/lubaoBox.js"></script>-->
+<script>
+    var _escape = function(string) {
+        return (''+string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\//g,'&#x2F;');
+    };
+    var templateSettings = {
+        evaluate    : /<%([\s\S]+?)%>/g,
+        interpolate : /<%=([\s\S]+?)%>/g,
+        escape      : /<%-([\s\S]+?)%>/g
+    };
+    var noMatch = /.^/;
+
+    var template = function(str, data) {
+        var c  = templateSettings;
+        var tmpl = 'var __p=[],print=function(){__p.push.apply(__p,arguments);};' +
+            'with(obj||{}){__p.push(\'' +
+            str.replace(/\\/g, '\\\\')
+            .replace(/'/g, "\\'")
+            .replace(c.escape || noMatch, function(match, code) {
+                return "',_escape(" + unescape(code) + "),'";
+            })
+            .replace(c.interpolate || noMatch, function(match, code) {
+                return "'," + unescape(code) + ",'";
+            })
+            .replace(c.evaluate || noMatch, function(match, code) {
+                return "');" + unescape(code).replace(/[\r\n\t]/g, ' ') + ";__p.push('";
+            })
+            .replace(/\r/g, '\\r')
+            .replace(/\n/g, '\\n')
+            .replace(/\t/g, '\\t')
+            + "');}return __p.join('');";
+        var func = new Function('obj', '_escape', tmpl);
+        if (data) return func(data, _escape);
+        return function(data, _escape) {
+            return func.call(this, data, _escape);
+        };
+    };
+    
+    (function () {
+        var scr;
+        $(function(){
+            autoScrool();
+            loginFn();
+            
+            /*
+            //显示适配列表
+            $.ajax({
+                url: 'http://3gimg.qq.com/tencentMapTouch/lubao/hezi/cms/carStyle.js?ts=' + (new Date).getTime(),
+                dataType: 'jsonp',
+                jsonpCallback: 'cb',
+                success: function (cars) {
+                   $('#clsList').html(template($('#clsTpl').html(), {list: cars}));
+                   $('#carList').html(template($('#carTpl').html(), {list: cars}));
+                }
+            });
+            */
+            function getClsList(brands){
+                var list = [];
+                for(var i=0; i< brands.length; i++){
+                    var letter = brands[i].firstLetter.toUpperCase();
+                    if($.inArray(letter, list)==-1){
+                        list.push(letter);
+                    }
+                }
+                return list.sort();
+            }
+            function getCarStyle(carStyle2){
+                var output = {};
+                var brands = carStyle2.brand;
+                var serials = carStyle2.serial;
+                for(var i=0; i< brands.length; i++){
+                    var b = brands[i]; //品牌
+                    var L = b.firstLetter.toUpperCase();
+                    !output[L] && (output[L] = []); // {'A': []}
+                    output[L].push(b);
+                }
+                for(var j=0; j< serials.length; j++){
+                    var c = serials[j]; //车系
+                    c.year = String(c.modelYears).replace(/,/g, '、');
+                    var b = getBrandById(output, c.manufacturerID);
+                    !b['serial'] && (b['serial'] = []);
+                    b['serial'].push(c);
+                }
+                return output;
+            }
+            function getBrandById(output, bid){
+                for(var i in output){
+                    var arr = output[i];
+                    for(var k=0; k<arr.length; k++){
+                        var b = arr[k];
+                        if(bid == b.id){
+                            return b;
+                        }
+                    }
+                }
+            }
+            //显示适配列表
+            $.ajax({
+                url: 'http://3gimg.qq.com/tencentMapTouch/lubao/hezi/cms/carStyle2.js?ts=' + (new Date).getTime(),
+                dataType: 'jsonp',
+                jsonpCallback: 'cb',
+                success: function (carStyle2) {
+                    var clsList = getClsList(carStyle2.brand);
+                    $('#clsList').html(template($('#clsTpl').html(), {list: clsList}));
+                    var cars = getCarStyle(carStyle2);
+                    $('#carList').html(template($('#carTpl').html(), {list: cars}));
+                }
+            });
+            
+            
+            $("#check-list").on("click", "a", function () {
+
+                $("#check-list a").removeClass("click_active")
+                $(this).addClass("click_active");
+                var thisName = $(this).text();
+
+                $(".th").find("a").each(function () {
+                    if ($(this).text().indexOf($.trim(thisName)) != -1) {
+                        var scroolT = $(this).offset().top - scr - 100;
+                        if (scroolT === scr)  return;
+
+                        $('body, html').animate({scrollTop: scroolT });
+                    }
+
+                })
+            });
+
+            var header_left = $('#page_header').offset().left;
+            $('#page_header').css('margin-left', '-' + header_left);
+            
+            var $curBox;
+            $('#carList').on('click', '.car', function(){
+                $curBox && $curBox.hide();
+                $curBox = $(this).next();
+                $curBox.show();
+                return false;
+            });
+            
+            $('#carList').on('click', '.icon-beizhu', function(){
+                $curBox && $curBox.hide();
+                
+                return false;
+            });
+            
+            $(document).on('click', function(){
+                $('.cord-box').hide();
+            })
+        })
+        
+        $(window).resize(function () {
+            autoScrool();
+        })
+
+        function autoScrool() {
+            scr = $("#check-list").height();
+            $("body").css({
+                "padding-top": scr + 100
+            })
+        }
+
+        function getCookie(Name) {
+            var search = Name + "="
+            if (document.cookie.length > 0) {
+                offset = document.cookie.indexOf(search)
+                if (offset != -1) {
+                    offset += search.length
+                    end = document.cookie.indexOf(";", offset)
+                    if (end == -1) end = document.cookie.length
+                    return unescape(document.cookie.substring(offset, end))
+                }
+                else return ""
+            }
+        };
+        
+        function loginFn() {
+            $(".login-link").click(function () {
+                if (getCookie("user_id") != null) {
+                    window.qq_login && window.qq_login.login();
+                    return false;
+                }
+            })
+        }
+        
+        //显示通知消息
+         $.ajax({
+            url: 'http://3gimg.qq.com/tencentMapTouch/lubao/hezi/cms/msg.js?ts=' + (new Date).getTime(),
+            dataType: 'jsonp',
+            jsonpCallback: 'cb2',
+            success: function (resp) {
+                if(resp && resp.isShow){
+                    $('#msgList').html(template($('#msgTpl').html(), {list: resp.msgs})).show();
+                }
+            }
+        });
+    })()
+</script>
+<!-- <script type="text/javascript" src="http://tajs.qq.com/stats?sId=37981487" charset="UTF-8"></script> -->
+<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>
+</body>
+</html>
