@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="alternate" media="handheld" href="#" />
+<!-- end 云适配 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>找工作-互联网招聘求职网-拉勾网</title>
+<meta property="qc:admins" content="23635710066417756375" />
+<meta content="拉勾网是3W旗下的互联网领域垂直招聘网站" name="description">
+<meta content="拉勾,拉勾网,拉勾招聘,拉钩, 拉钩网 ,互联网招聘,拉勾互联网招聘, 移动互联网招聘, 垂直互联网招聘, 微信招聘, 微博招聘, 拉勾官网, 拉勾百科,跳槽, 高薪职位, 互联网圈子, IT招聘, 职场招聘, 猎头招聘,O2O招聘, LBS招聘, 社交招聘, 校园招聘, 校招,社会招聘,社招" name="keywords"> 
+<link rel="Shortcut Icon" href="../images/favicon.ico">
+<link rel="stylesheet" type="text/css" href="../css/resume.css">
+<link rel="stylesheet" type="text/css" href="../css/position.css">
+<script type="text/javascript" src="../js/lib/jquery.1.10.1.min.js"></script>
+<script type="text/javascript" src="../js/lib/jquery.lib.min.js"></script>
+<script type="text/javascript" src="../js/lib/handlebars-v1.3.0.js"></script>
+</head>
+<body>
+ <div class="box">
+     <div class="header">
+      <div class="header-border"></div>
+      <div class="header-bg clearfix">
+       <img class="logo" src="../images/logo.png">
+       <div class="hd_right">
+       
+        <span class="show_yipai">人才拍卖</span>
+        <a href="javascript:void(0);" class="show_ma">
+         <img src="../images/app.png" class="appImg">
+         <span class="app">拉勾APP</span>
+        </a>
+        <span class="show_qiyeban">去企业版</span>
+        <img src="../images/qrcode.png" class="ma">
+       </div>
+      </div>
+     </div>
+     <div class="middle">
+      <img src="../images/bg.png" class="bg">
+      <div class="contain clearfix">
+       <div class="left">
+        <img class="close2 aleft" src="../images/close2.png">
+        <img class="shade" src="../images/shade.png">
+        <div class="img-box">
+         <img src="../images/position/360.png">
+         <img src="../images/position/meituan.png">
+         <img src="../images/position/souhu.png">
+         <img src="../images/position/quna.png">
+         <img src="../images/position/baidu.png">
+         <img src="../images/position/alibaba.png">
+         <img src="../images/position/xiecheng.png">
+         <img src="../images/position/qq.png">
+        </div>
+        <ul class="reset joblist_nav clearfix">
+         <li class="mf20 $!{jishuActive} hover"><a href="javascript:;">技术</a></li>
+         <li class="$!{chanpinActive}"><a href="javascript:;">产品</a></li>
+         <li class="$!{shejiActive}"><a href="javascript:;">设计</a></li>
+         <li class="$!{yunyingActive}"><a href="javascript:;">运营</a></li>
+         <li class="$!{shichangActive}"><a href="javascript:;">市场</a></li>
+         <li class="$!{jinrongActive}"><a href="javascript:;">职能</a></li>
+        </ul>
+        <ul class="job_detail">
+         
+        </ul>
+        <div class="comp_box">
+         
+     </div>
+     <div class="job_box">
+         
+     
+     </div>
+       </div>
+       <div class="lp_login">
+        <form class="lp_loginform" id="lp_loginform" method="post" action="javascript:;">
+         <h2>8秒注册，看看行业薪资水平</h2>
+         <input type="text" placeholder="请输入常用邮箱" id="lp_email" name="email" autocomplete="off" class="error">
+         
+         <input type="password" placeholder="请设置密码" id="lp_password" name="password" autocomplete="off">
+         
+         <div id="vcode_div" style="display:none;">
+         <input type="text" id="lp_vcode" name="vcode" tabindex="3" onclick="$('#lp_vcodeError').text('').hide();" placeholder="请输入验证码（不区分大小写）">
+         <span class="error" style="display:none;" id="lp_vcodeError"></span>
+                     <label class="vcode_img">
+                         <img src="/vcode/create?from=register" width="113" height="42" id="vcodeImg">
+                         <span>看不清楚，<a onclick="javascript:$('#vcodeImg').attr('src','/vcode/create?from=register')">换一张</a></span>
+                     </label>
+         </div>
+         
+         <input type="submit" value="" id="lp_submit">
+         <label for="lp_agreeNotice" class="lp_agreeNotice" checked="true"> <em style="background-position: 0px 0px;"></em>
+             <input type="checkbox" name="checkbox" checked="checked" class="checkbox valid" id="lp_agreeNotice">我已阅读并同意<a href="http://www.lagou.com/privacy.html" target="_blank">《拉勾用户协议》</a>
+         </label>    
+        </form>
+        <div class="qqsina">
+         <div>或使用以下帐号登录</div>
+            <a href="/oauth20/auth_sinaWeiboProvider.html" target="_blank" class="icon_wb" title="使用新浪微博帐号登录"></a>
+         <a href="/oauth20/auth_qqProvider.html" class="icon_qq" target="_blank" title="使用腾讯QQ帐号登录"></a>
+      <a href="/oauth20/auth_weixinProvider.html" class="icon_weixin" target="_blank" title="使用微信帐号登录"></a>
+     </div>
+     <div class="login">
+      <a id="lp_login" target="_blank" href="http://passport.lagou.com/login/login.html"><em></em>已有帐号，去登录<img src="../images/login.png"></a>
+     
+     </div>
+       </div>
+      </div>
+     </div>
+     <div class="footer">
+      <ul class="info clearfix">
+       <li>
+        <img src="../images/icon1.png">
+        <div>
+         <p class="title">极速入职</p>
+         <p class="content">最快24小时拿到企业offer</p>
+        </div>
+       </li>
+       <li>
+        <img src="../images/icon2.png">
+        <div>
+         <p class="title">隐私保护</p>
+         <p class="content">安全私密快速投简历</p>
+        </div>
+       </li>
+       <li>
+        <img src="../images/icon3.png">
+        <div>
+         <p class="title">薪资透明</p>
+         <p class="content">薪资绝对透明真实谢绝面议</p>
+        </div>
+       </li>
+       <li class="end">
+        <img src="../images/icon4.png">
+        <div>
+         <p class="title">海量信息</p>
+         <p class="content">安全私密快速投简历</p>
+        </div>
+       </li>
+      </ul>
+     </div>
+ </div>
+<!-- 职位列表模版 -->
+<script id="jobs-template" type="text/x-handlebars-template">
+{{#each this}}
+ <li>
+  <span class="compName">{{company}}</span>
+  <span class="jobName">{{jobName}}</span>
+  <span class="salary">{{salary}}</span>
+ </li>
+{{/each}}
+</script>
+<!-- 公司卡片模版 -->
+<script id="company-template" type="text/x-handlebars-template">
+ <a href="javascript:void(0);"><img class="close" src="../images/position/close.png"></a>
+ <p class="compName">{{company}}</p>
+ <p class="slogan">{{slogan}}</p>
+ <ul class="jobList">
+ {{#each this.jobs}}
+  <span>{{this}}</span>
+ {{/each}}
+ </ul>
+ <ul class="welfare">
+ {{#each this.profession}}
+  <span>{{this}}</span>
+ {{/each}}
+ 
+ </ul>
+</script>
+<!-- 职位卡片模版 -->
+<script id="job-template" type="text/x-handlebars-template">
+ <a href="javascript:void(0);"><img class="close" src="../images/position/close.png"></a>
+ <p class="jobName">{{jobName}}</p>
+ <p class="slogan">{{goods}}</p>
+ <ul class="jobRequire">
+  <span class="salary">{{salary}}</span>
+  <span>{{address}}</span>
+  {{#each this.require}}
+   <span>{{this}}</span>
+  {{/each}}
+ </ul>
+</script>
+<script type="text/javascript" src="http://www.lagou.com/js/libs/analytics.js"></script>
+
+ <script type="text/javascript" src="../js/landingpage.js"></script>
+<script type="text/javascript" src="../js/position.js"></script>
+</body>
+</html>
