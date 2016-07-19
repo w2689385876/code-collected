@@ -1,0 +1,133 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title></title>
+        <script type="text/javascript" src="http://192.168.1.155:8080/storage/frontend/js/libs/jquery-1.9.1.min.js" ></script>
+        <script type="text/javascript">
+         var  roll={
+            Msgs:["一等獎","二等獎","三等獎","四等獎","五等獎","六等獎","七等獎","八等獎"],
+            index:0,//当前位置索引
+            times:0,//次数
+            roundTimes:0,//圈数
+            timer:0,//循环器
+            speed:300,//转动速度
+            isActive:false,//游戏是否在运行
+            Init:function(){
+                ///初始化
+                this.roundTimes=0;
+                this.isActive=true;
+            },
+            Start:function(cls,callback){
+                var  that=this;
+                if(that.isActive==true){
+                    alert('游戏正在进行!');
+                    return;
+                }
+                if(that.times==4){
+                    alert('只有四次机会');
+                    return;
+                }
+                that.Init();
+                var  interVal=setInterval(function(){
+                        if(that.index==8){
+                            that.index=0;
+                            that.roundTimes++;
+                        }
+                        if(that.roundTimes==6){
+                           that.index=parseInt(Math.random()*7);
+                            $('li[class^='+cls+']').removeClass('active');
+                            $('.'+cls+'-'+ that.index).addClass('active');
+                            that.isActive=false;
+                            clearInterval(that.timer);
+                            if(Object.prototype.toString.call(callback)=='[object Function]'){
+                                     callback.call(this,that.index,that.Msgs[that.index]);
+                            }
+                        }else{
+                           $('li[class^='+cls+']').removeClass('active');
+                           $('.'+cls+'-'+ that.index).addClass('active');
+                           that.index++;
+                        }
+                          
+                    },100);
+                that.timer=interVal;
+                that.times++;
+            }
+         }
+             
+         $(function(){
+            $('#btnChouj').click(function(){
+                roll.Start('prize',function(index,msg){
+                    setTimeout(function(){
+                        alert(msg);
+                    }) 
+                });
+            });
+         })
+                 
+        </script>
+        <style type="text/css">
+            html,body{
+                margin:0  auto;
+                padding: 0;
+                width: 100%;
+                 height: 100%;
+            }
+            #choujiangUL{
+                list-style: none;
+                position: absolute;
+                width: 100%;
+                height: 50%;
+            }
+            #choujiangUL li{
+              float: left;
+              width: 32%;
+        /*    height: 33.33%;*/
+              text-align: center;
+              border: 1px solid #CCCCCC
+              /*background-color: deepskyblue;*/
+             /*border: 1px solid white;*/
+            }
+            #choujiangUL li img{
+                 width: 100px;
+                 height: 100px;
+            }
+             
+            .active{
+                background-color: #990000;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="choujiangUL">
+            <li class="prize-0 active">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384225347.jpg"/>
+            </li>
+            <li class="prize-1">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384341184.jpg"/>
+            </li>
+            <li class="prize-2">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384359816.jpg?201510138449" />
+            </li>
+            <li class="prize-7">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384435241.jpg?2015101384444" />
+            </li>
+            <li id="btnChouj" >
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384530583.jpg?2015101384542" />
+            </li>
+            <li class="prize-3">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384452524.jpg?201510138455" />
+            </li>
+            <li class="prize-6">
+                <img src="http://files.jb51.net/file_images/article/201511/2015111384513021.jpg?2015101384523" />
+            </li>
+            <li class="prize-5">
+                <img src="http://images2015.cnblogs.com/blog/315302/201511/315302-20151104092131727-1160533027.jpg" />
+            </li>
+            <li class="prize-4">
+                <img src="http://images2015.cnblogs.com/blog/315302/201604/315302-20160418093826366-2100170625.jpg" />
+            </li>
+        </ul>
+    </body>
+</html>
